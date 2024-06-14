@@ -1,0 +1,7 @@
+[
+{"Id":1,"Name":"yomna","Email":"yomna@gmail.com","Password":"yomna123","DepartmentId":1},
+{"Id":2,"Name":"omar2","Email":"omar@gmail.com","Password":"omar123","DepartmentId":2},
+{"Id":2,"Name":"Ahmed","Email":"Ahmed@gmail.com","Password":"Ahmed123","DepartmentId":3},
+{"Id":4,"name":"yara","Email":"yara@gmail.com","Password":"yara123"},
+{"id":5,"name":"yara","Email":"yara2@gmail.com","Password":"yara123"}
+]
