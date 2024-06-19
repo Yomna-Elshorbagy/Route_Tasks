@@ -1,0 +1,391 @@
+{
+	"info": {
+		"_postman_id": "59117ff5-bd5d-43c0-bd02-0e57798c9a86",
+		"name": "FaceBook",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32445638"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "log in",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"omar@gmail.com\",\r\n    \"password\":\"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://facebook-nodejs.onrender.com/users/login",
+							"protocol": "https",
+							"host": [
+								"facebook-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"yomna mohamed\",\r\n    \"email\": \"yomna@gmail.com\",\r\n    \"password\":\"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6000/users/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"users",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://facebook-nodejs.onrender.com/users",
+							"protocol": "https",
+							"host": [
+								"facebook-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "posts",
+			"item": [
+				{
+					"name": "getAllPosts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://facebook-nodejs.onrender.com/posts",
+							"protocol": "https",
+							"host": [
+								"facebook-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addPost",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"post 2\",\r\n    \"content\": \"content post 2\",\r\n    \"author\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://facebook-nodejs.onrender.com/posts/addPost",
+							"protocol": "https",
+							"host": [
+								"facebook-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts",
+								"addPost"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update post",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"post 3\",\r\n    \"content\": \"content post 3\",\r\n    \"author\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://facebook-nodejs.onrender.com/posts/3",
+							"protocol": "https",
+							"host": [
+								"facebook-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete post",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"author\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://facebook-nodejs.onrender.com/posts/2",
+							"protocol": "https",
+							"host": [
+								"facebook-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post of author",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"author\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://facebook-nodejs.onrender.com/posts/author/3",
+							"protocol": "https",
+							"host": [
+								"facebook-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts",
+								"author",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comments",
+			"item": [
+				{
+					"name": "add comment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"comment 2\",\r\n    \"userId\": 2,\r\n    \"postId\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://facebook-nodejs.onrender.com/comments/addComment",
+							"protocol": "https",
+							"host": [
+								"facebook-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"comments",
+								"addComment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UserPostAndComments",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": 1,\r\n    \"postId\":4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://facebook-nodejs.onrender.com/users/2/1",
+							"protocol": "https",
+							"host": [
+								"facebook-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"2",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update comments",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"comment 1\",\r\n    \"userId\": 1,\r\n    \"postId\":4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6000/comments/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"comments",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get All Comments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://facebook-nodejs.onrender.com/comments",
+							"protocol": "https",
+							"host": [
+								"facebook-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete Comment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://facebook-nodejs.onrender.com/comments/3",
+							"protocol": "https",
+							"host": [
+								"facebook-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"comments",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
