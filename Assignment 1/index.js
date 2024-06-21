@@ -45,6 +45,20 @@ console.log (arrEven)
 
 ////////////////////////////////////////////////////
 //Q5:
+{
+    let arr = [[1,2], [3,4]];
+    let spread = [...arr];
+    let deep =JSON.parse(JSON.stringify(arr));
+    // spread[0][1];
+    console.log(arr);
+    deep[0][1]=10;
+    console.log(deep);
+}
+//Or
+function deepClone(arr) {
+    const copyArr = JSON.parse(JSON.stringify(arr)); 
+    return copyArr;
+    };
 
 ////////////////////////////////////////////////////
 //Q6:

@@ -118,6 +118,9 @@ server.get('/memberExp/:id', (req, res)=>{
 server.post('/addmember', (req,res)=>{
     let memberId = members.length + 1; 
     req.body.id = memberId;
+    if(!memberId){y
+        res.status(400).json({message:'member Not exisist'});
+    }
     members.push(req.body);
     fs.writeFileSync('gymMembers.json', JSON.stringify(members));
     res.status(201).json({message:'member added sucessfully', members});
@@ -146,6 +149,19 @@ server.delete('/member/:id',(req, res)=>{
         res.status(200).json({message:' member index incorrect'})
     }
 })
+// Delete Member soft delete: !importatnt to understand what is soft delete     
+server.put('/member/:id', (req, res,next)=>{
+    let {id} = req.params;
+    let member = members.find(member => member.id === +id)
+    if (!member){
+        res.json({message:'member not found'})
+    }else{
+        let index = members.findIndex(member => member.id== id);
+        members[index].status = req.body.status; // update by add statuse from active to freeze
+        fs.writeFileSync('gymMembers.json', JSON.stringify(members));
+        res.json({message:'member deleted sucesfully ..'})
+    }
+});
 
 // update member :   
 server.put('/member/:id', (req, res,next)=>{
