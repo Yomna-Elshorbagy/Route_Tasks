@@ -1,7 +1,7 @@
 import express from 'express';
 import 'dotenv/config'; 
 import sequelize from './database/dbConnection.js';
-import postRouter from './modules/posts/posts.routes.js';
+import notesRouter from './modules/notes/notes.routes.js';
 import userRouter from './modules/users/users.routes.js';
 import cors from 'cors'
 const server = express();
@@ -14,8 +14,8 @@ server.use(cors());
 sequelize.sync()
 
 
-server.use('/', postRouter);
-server.use('/', userRouter);
+server.use('/note', notesRouter);
+server.use('/user', userRouter);
 
 
 server.listen(port, () => console.log(`Example app listening on port ${port}!`))

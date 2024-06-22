@@ -57,6 +57,45 @@ export const getAllUsers = async(req, res, next)=>{
     res.json({message: 'allUsers are : ', isUser})
 };
 
+export const updateUser = async (req,res)=>{
+    const {username, email, password} = req.body;
+    const {id}= req.params;
+
+    const isUser = await userModel.findOne({
+        where:{id}
+    });
+    if(!isUser){
+        return res.json({message:'user Not found'})
+    };
+    const [updatedUser] = await userModel.update({
+        username,
+        email,
+        password
+    }, {
+        where:{
+        id: req.params.id
+    }
+   });
+   res.status(200).json({message:'user Updated Sucessfully',updatedUser})
+ };
+
+ export const deleteUser = async (req,res)=>{
+    const {id}= req.params;
+    const isUser = await userModel.findOne({
+        where:{id,}
+    });
+    if(!isUser){
+        return res.json({message:'user Not found'})
+    };
+    const deletedUser = await userModel.destroy({
+        where: {
+            id :id
+        }
+    });
+    res.json({message:'user deleted Sucessfully',deletedUser})
+ }
+
+
 export const logout = (req, res) => {
     res.json({ message: 'Logout successful' });
   };
