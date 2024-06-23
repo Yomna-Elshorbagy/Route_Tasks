@@ -8,7 +8,7 @@ userRouter.post('/login', logIn);
 userRouter.put('/:id',updateUser)
 userRouter.delete('/:id',deleteUser);
 userRouter.get('/', getAllUsers);
-userRouter.post('/logout',logout);
+userRouter.post('/logout/:id',logout);
 userRouter.get('/:userId/:postId', getUserPostAndComments);
 
 

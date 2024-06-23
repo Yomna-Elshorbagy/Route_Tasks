@@ -43,6 +43,12 @@ export const logIn = async (req,res,next)=>{
         }
     });
 
+    const updateStatus = await userModel.update({
+        status: "online" 
+    }, {
+        where: {email}
+    });
+
     const isPass = bcyrpt.compareSync(password ,isUser.password );
 
     if (!isUser || !isPass){
@@ -96,9 +102,30 @@ export const updateUser = async (req,res)=>{
  }
 
 
-export const logout = (req, res) => {
-    res.json({ message: 'Logout successful' });
+
+ export const logout = async(req, res) => {
+    const {id}= req.params;
+
+    const isUser = await userModel.findOne({
+        where:{id,}
+    });
+    if(!isUser){
+        return res.status(404).json({message:'user Not found'})
+    };
+    if (!isUser.status.includes("online")) {
+        return res.status(400).json({ message: 'User is not online' });
+    }
+
+    const [updatedUser] = await userModel.update(
+        { status: "online" },
+        {
+        where:{
+        id : id
+    }
+   });
+    res.json({ message: 'Logout successful' ,updatedUser});
   };
+
 
   
 export const getUserPostAndComments = async (req, res) => {

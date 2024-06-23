@@ -26,7 +26,7 @@ export const addPost = async(req,res,next)=>{
         content, 
         author
     })
-    res.json({message:'post added successfully ', post})
+    res.status(201).json({message:'post added successfully ', post})
 };
 
 export const updatePost = async(req,res,next)=>{
@@ -40,17 +40,17 @@ export const updatePost = async(req,res,next)=>{
             id : req.params.id
         }
     });
-    res.json({message:'post Updated Sucessfully ', postUpdated})
+    res.status(200).json({message:'post Updated Sucessfully ', postUpdated})
 };
 
 export const deletePost = async(req,res,next)=>{
     const {id} = req.params;
-    const postUpdated = await postsModel.destroy({
+    const postDeleted = await postsModel.destroy({
         where: {
             id :id
         }
     });
-    res.json({message:'post deleted Sucessfully ', postUpdated})
+    res.json({message:'post deleted Sucessfully ', postDeleted})
 };
 
 export const getPostWithAuthor = async (req, res) => {

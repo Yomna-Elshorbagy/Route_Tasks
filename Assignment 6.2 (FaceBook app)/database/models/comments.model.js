@@ -10,7 +10,9 @@ const commentsModel = sequelize.define('comment', {
     }
 });
 
-commentsModel.belongsTo(userModel, { foreignKey: 'userId' })
-commentsModel.belongsTo(postsModel, { foreignKey: 'postId' })
+commentsModel.belongsTo(userModel, { foreignKey: 'userId' });
+userModel.hasMany(commentsModel);
+commentsModel.belongsTo(postsModel, { foreignKey: 'postId' });
+postsModel.hasMany(postsModel);
 
 export default commentsModel;
