@@ -7,6 +7,7 @@ export const getAllReservations = async (req,res,next)=>{
     try{
     let reservation = await reservationModel.find()
     .populate('client')
+    .populate('trainer')
     .populate('plan'); 
     res.status(200).json({ message: "All reservations: ", reservation });
     }catch(err) {
@@ -20,6 +21,7 @@ export const getRseerveById = async (req,res,next)=>{
         let {id}= req.params;
         let reservation = await reservationModel.findById(id)  
         .populate('client')
+        .populate('trainer')
         .populate('plan');
         if(!reservation){
             return res.json({message:'reservation doesnot exisit'})
@@ -33,7 +35,7 @@ export const getRseerveById = async (req,res,next)=>{
 
 export const addReservation = async (req,res, next)=>{
     try{
-        let { client, plan, start_time, end_time } = req.body; 
+        let { client, trainer, plan, start_time, end_time } = req.body; 
     
         const user = await userModel.findById(client);
         if (!user) {
@@ -45,6 +47,7 @@ export const addReservation = async (req,res, next)=>{
           }
         let Reserve = await reservationModel.insertMany({
             client,
+            trainer,
             plan,
             start_time,
             end_time,
@@ -58,7 +61,7 @@ export const addReservation = async (req,res, next)=>{
 
 export const updateReservation = async (req,res, next)=>{
     let {id}= req.params;
-    let { client, plan, start_time, end_time } = req.body; 
+    let { client, plan, trainer, start_time, end_time } = req.body; 
 
     let foundedReservation = await reservationModel.findById(id);
     if(!foundedReservation){
@@ -68,6 +71,7 @@ export const updateReservation = async (req,res, next)=>{
         foundedReservation._id,
         {
             client,
+            trainer,
             plan,
             start_time,
             end_time,

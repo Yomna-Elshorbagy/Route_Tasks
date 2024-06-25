@@ -6,6 +6,11 @@ const reservationSchema = new mongoose.Schema({
         ref: "User",
         required: true 
     },
+    trainer: { 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: "Trainer",
+        required: true 
+    },
     plan: { 
         type: mongoose.Schema.Types.ObjectId, 
         ref: "Plan",
