@@ -1,21 +1,24 @@
 import mongoose from "mongoose";
 
-let massageSchema = new mongoose.Schema(
+let autherSchema = new mongoose.Schema(
   {
-    title: {
+    name: {
       type: String,
       required: true,
       trim: true,
-      maxlength: 50,
+      maxlength: 100,
+      index: true,
     },
-    content: {
+    bio: {
       type: String,
-      required: true,
     },
-    receiverId: {
+    books: [{
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: "Book",
       required: true,
+    }],
+    birthDate: {
+      type: Date,
     },
   },
   {
@@ -24,6 +27,6 @@ let massageSchema = new mongoose.Schema(
   }
 );
 
-const massageModel = mongoose.model("Massage", massageSchema);
+let autherModel = mongoose.model("Auther", autherSchema);
 
-export default massageModel;
+export default autherModel;
